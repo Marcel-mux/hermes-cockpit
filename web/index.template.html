@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, interactive-widget=resizes-content" />
+    <meta name="theme-color" content="#0a0b0e" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <title>Hermes Cockpit</title>
+    <style>
+      @font-face {
+        font-family: 'Rules Expanded';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url('/fonts/RulesExpanded-Bold.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Rules Expanded';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/RulesExpanded-Regular.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Collapse';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/Collapse-Regular.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Collapse';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url('/fonts/Collapse-Bold.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Collapse';
+        font-style: normal;
+        font-weight: 800;
+        font-display: swap;
+        src: url('/fonts/Collapse-Bold.woff2') format('woff2');
+      }
+      @keyframes chatBubbleEnter {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes cursorBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.15; }
+      }
+      .cursor-blink {
+        animation: cursorBlink 0.9s infinite ease-in-out;
+      }
+    </style>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+    </script>
+    <!-- The `react-native-web` recommended style reset: https://necolas.github.io/react-native-web/docs/setup/#root-element -->
+    <style id="expo-reset">
+      /* These styles make the body full-height at mobile native density */
+      html {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+      }
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+        zoom: 1.05;
+        font-family: 'Collapse', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background-color: #0a0b0e;
+        color-scheme: dark;
+      }
+      /* These styles disable body scrolling if you are using <ScrollView> */
+      body {
+        overflow: hidden;
+        overscroll-behavior: none;
+      }
+      /* Dark scrollbars: color-scheme alone still leaves a light track on some
+         Android Chrome builds, which showed as a white block in dark mode. */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(148, 163, 184, 0.35) transparent;
+      }
+      *::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+        background: transparent;
+      }
+      *::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      *::-webkit-scrollbar-thumb {
+        background: rgba(148, 163, 184, 0.35);
+        border-radius: 99px;
+      }
+      /* These styles make the root element full-height */
+      #root {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        flex: 1;
+        font-family: 'Collapse', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+      /* Automatically hide bottom tab bar when mobile virtual keyboard is active */
+      body.keyboard-open #cockpit-bottom-tabbar,
+      body.keyboard-open [data-cockpit-tabbar="true"] {
+        display: none !important;
+      }
+      @media screen and (max-height: 480px) and (orientation: portrait) {
+        #cockpit-bottom-tabbar,
+        [data-cockpit-tabbar="true"] {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Use static rendering with Expo Router to support running without JavaScript. -->
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <!-- The root element for your Expo app. -->
+    <div id="root"></div>
+    <script>
+      (function() {
+        if (typeof window !== 'undefined' && window.visualViewport) {
+          function checkKeyboard() {
+            var vv = window.visualViewport;
+            var isKeyboard = vv.height < (window.innerHeight - 120);
+            if (isKeyboard) {
+              document.body.classList.add('keyboard-open');
+            } else {
+              document.body.classList.remove('keyboard-open');
+            }
+          }
+          window.visualViewport.addEventListener('resize', checkKeyboard);
+          window.visualViewport.addEventListener('scroll', checkKeyboard);
+        }
+      })();
+    </script>
+  <script src="/_expo/static/js/web/{{BUNDLE}}" defer></script>
+</body>
+</html>

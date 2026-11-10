@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "Hermes Cockpit",
+    "slug": "hermes-cockpit",
+    "scheme": "hermescockpit",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.marcelmux.hermescockpit"
+    },
+    "android": {
+      "package": "com.marcelmux.hermescockpit"
+    },
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-secure-store"
+    ],
+    "icon": "./icon-512.png"
+  }
+}

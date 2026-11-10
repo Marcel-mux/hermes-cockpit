@@ -1,0 +1,25 @@
+services:
+  hermes-cockpit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: hermes-cockpit:latest
+    container_name: hermes-cockpit
+    restart: unless-stopped
+    ports:
+      - "8088:8088"
+    environment:
+      - PORT=8088
+      - HOST=0.0.0.0
+      - HERMES_HOST=host.docker.internal
+      - HERMES_PORT=9119
+      - HERMES_PROFILE=hermes-cockpit
+      # Optional: mount ~/.hermes for direct session context & turn leases inspection
+      # - HERMES_HOME=/root/.hermes
+    volumes:
+      # Optional: bind mount ~/.hermes read-only for real-time lease & active turns status
+      - ~/.hermes:/root/.hermes:ro
+      # Optional: bind mount ~/.9router read-only if 9Router telemetry is desired
+      # - ~/.9router:/root/.9router:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

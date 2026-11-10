@@ -1,0 +1,53 @@
+{
+  "name": "hermes-cockpit",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Hermes Cockpit — A retro-tech, mobile-first PWA cockpit and dashboard client for Hermes Agent.",
+  "main": "node_modules/expo/AppEntry.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Marcel-mux/hermes-cockpit.git"
+  },
+  "keywords": [
+    "hermes",
+    "hermes-agent",
+    "ai-agent",
+    "cockpit",
+    "pwa",
+    "react-native-web",
+    "cyberpunk"
+  ],
+  "author": "Marcel-mux",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "expo start",
+    "ios": "expo start --ios",
+    "android": "expo start --android",
+    "web": "expo start --web",
+    "typecheck": "tsc --noEmit",
+    "test:api": "node scripts/smoke-hermes-api.mjs",
+    "test:turn": "tsc src/turnState.ts --outDir .tmp-tests --module commonjs --target es2022 --moduleResolution node --skipLibCheck && node --test tests/turnState.test.cjs",
+    "build:web": "expo export --platform web --output-dir dist && node scripts/finalize-web.mjs"
+  },
+  "dependencies": {
+    "@expo/vector-icons": "^15.1.1",
+    "expo": "~54.0.35",
+    "expo-clipboard": "~8.0.8",
+    "expo-font": "~14.0.12",
+    "expo-haptics": "~15.0.8",
+    "expo-linear-gradient": "~15.0.8",
+    "expo-secure-store": "~15.0.8",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-web": "^0.21.2"
+  },
+  "devDependencies": {
+    "@expo/ngrok": "^4.1.3",
+    "@types/react": "~19.1.10",
+    "babel-preset-expo": "~54.0.8",
+    "typescript": "~5.9.2"
+  }
+}
