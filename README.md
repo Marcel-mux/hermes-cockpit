@@ -39,6 +39,26 @@ While the official Hermes Agent provides powerful CLI and desktop dashboard inte
 
 ---
 
+## 📱 Screenshots
+
+<div align="center">
+
+### 💬 Chat Interface (Live Reasoning & Thought Stream)
+
+| Dark Mode | Light Mode |
+| :---: | :---: |
+| <img src="docs/screenshots/chat-dark.png" width="340" alt="Hermes Cockpit Chat Interface - Dark Mode" /> | <img src="docs/screenshots/chat-light.png" width="340" alt="Hermes Cockpit Chat Interface - Light Mode" /> |
+
+### ⚙️ System Telemetry & Quota Tracker
+
+| Dark Mode | Light Mode |
+| :---: | :---: |
+| <img src="docs/screenshots/settings-dark.png" width="340" alt="Hermes Cockpit Settings - Dark Mode" /> | <img src="docs/screenshots/settings-light.png" width="340" alt="Hermes Cockpit Settings - Light Mode" /> |
+
+</div>
+
+---
+
 ## ✨ Features
 
 - **📱 True Mobile-First PWA & WebAPK**: Install directly to your home screen on Android and iOS. Operates in standalone full-screen window mode without browser address bars.
